@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#8F1D2C">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Sun & Sky">
+  <title>Sun &amp; Sky ☀️</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-90s">
+
+  <header class="topbar">
+    <a href="#" class="brand" id="brandHome">
+      <span class="brand-icon">☀️</span>
+      <span>sun &amp; sky<span class="brand-dot">.</span></span>
+    </a>
+
+    <button
+      id="peekBtn"
+      class="peek-btn"
+      type="button"
+      aria-label="Open Peek-a-boo memories"
+    >
+      peek-a-boo! ♡
+    </button>
+  </header>
+
+  <main>
+
+    <!-- PAGE 1: WELCOME -->
+
+    <section id="welcomePage" class="app-page welcome-page">
+      <div class="welcome-art" aria-hidden="true">☀️</div>
+
+      <span class="eyebrow">YOUR LITTLE TIME CAPSULE ✨</span>
+
+      <h1>
+        Welcome Back<br>
+        <span>Home 🎀</span>
+      </h1>
+
+      <p>
+        A little home for your favourite people, places,
+        and moments you never want to forget.
+      </p>
+
+      <div class="welcome-sticker">♡ little moments, forever ♡</div>
+
+      <button id="startBtn" class="primary-btn start-btn" type="button">
+        Swipe right to start the endless journey →
+      </button>
+
+      <p class="swipe-hint">Or swipe right anywhere on this page ✨</p>
+    </section>
+
+    <!-- PAGE 2: CALENDAR -->
+
+    <section id="calendarPage" class="app-page" hidden>
+      <div class="page-intro">
+        <span class="eyebrow">PAGE ONE · YOUR TIMELINE</span>
+        <h1>Your days, your story <span>♡</span></h1>
+        <p>Tap a date to open its scrapbook page.</p>
+      </div>
+
+      <section class="theme-section">
+        <span class="eyebrow">PICK YOUR SCRAPBOOK STYLE</span>
+
+        <div class="theme-options">
+          <button class="theme-option active" data-theme="90s"
+            type="button" aria-pressed="true">
+            <span class="theme-preview retro-preview">♥ ✦ ♥</span>
+            <span class="theme-name">90's</span>
+            <span class="theme-description">Retro scrapbook</span>
+          </button>
+
+          <button class="theme-option" data-theme="lovey-dovey"
+            type="button" aria-pressed="false">
+            <span class="theme-preview love-preview">♡ ✿ ♡</span>
+            <span class="theme-name">Lovey Dovey</span>
+            <span class="theme-description">Love journal</span>
+          </button>
+
+          <button class="theme-option" data-theme="memories"
+            type="button" aria-pressed="false">
+            <span class="theme-preview memories-preview">☀ ☁ ☀</span>
+            <span class="theme-name">Memories</span>
+            <span class="theme-description">Blue skies</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="calendar-card">
+        <div class="calendar-heading">
+          <button id="prevMonth" class="arrow"
+            type="button" aria-label="Previous month">‹</button>
+
+          <div>
+            <h2 id="monthTitle">October 2026</h2>
+            <p id="monthSubtitle">A month full of possibilities</p>
+          </div>
+
+          <button id="nextMonth" class="arrow"
+            type="button" aria-label="Next month">›</button>
+        </div>
+
+        <div class="weekdays">
+          <span>Mo</span><span>Tu</span><span>We</span>
+          <span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div class="legend">
+          <span class="legend-dot"></span>
+          Little memories live here
+        </div>
+      </section>
+
+      <button id="backHomeBtn" class="text-btn" type="button">
+        ← Back home
+      </button>
+    </section>
+
+    <!-- PAGE 3: PEEK-A-BOO MEMORY COLLECTION -->
+
+    <section id="peekPage" class="app-page" hidden>
+      <div class="page-intro">
+        <span class="eyebrow">PAGE TWO · YOUR FLASHBACKS</span>
+        <h1>Peek-a-boo! <span>♡</span></h1>
+        <p>Your saved moments, tucked away like little treasures.</p>
+      </div>
+
+      <div class="collection-heading">
+        <h2>Little moments ♡</h2>
+        <span id="memoryCount" class="count">0 photos</span>
+      </div>
+
+      <div id="memoryList" class="memory-list"></div>
+
+      <button id="backCalendarBtn" class="text-btn" type="button">
+        ← Back to calendar
+      </button>
+    </section>
+
+    <footer>
+      <span>made of sunshine &amp; memories</span>
+      <span>☀️ ♡ ☁️</span>
+    </footer>
+
+  </main>
+
+  <!-- SCRAPBOOK PAGE FOR A SELECTED DATE -->
+
+  <dialog id="memoryDialog" class="memory-dialog">
+    <form method="dialog">
+      <button class="close-btn" aria-label="Close">×</button>
+    </form>
+
+    <span class="eyebrow">YOUR LITTLE SCRAPBOOK</span>
+    <h2 id="selectedDateTitle">Your memories ♡</h2>
+    <p id="selectedDateSubtitle" class="dialog-subtitle"></p>
+
+    <div id="photoGrid" class="photo-grid"></div>
+
+    <label class="add-photo-btn">
+      <span>＋ Add more photos</span>
+      <input id="photoInput" type="file" accept="image/*" multiple>
+    </label>
+
+    <p id="saveStatus" role="status" aria-live="polite"></p>
+
+    <p class="privacy-note">
+      🔒 This version stores memories in this browser on this device.
+    </p>
+  </dialog>
+
+  <script src="app.js"></script>
+  <script src="share.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

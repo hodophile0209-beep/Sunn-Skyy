@@ -1,0 +1,14 @@
+{
+  "name": "Sun & Sky",
+  "short_name": "Sun & Sky",
+  "description": "A little time capsule for your favourite moments",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#8F1D2C",
+  "theme_color": "#8F1D2C",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
